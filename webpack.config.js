@@ -1,28 +1,14 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-module.exports = {
-  mode: "development",
+const base = require("./webpack.config.base.js"); //导入包含共有属性的js文件
 
-  entry: "./src/index.js",
-  output: {
-    filename: "index.[contenthash].js",
-    path: path.resolve(__dirname, "dist"),
-  },
+module.exports = {
+  ...base, //把base的所有属性抄到这里来
+  mode: "development",
   devServer: {
     contentBase: "./dist",
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: "我怕了",
-      template: "src/assets/index.html",
-    }),
-    new MiniCssExtractPlugin({
-      filename: "[name].[contenthash].css",
-      chunkFilename: "[id].[contenthash].css",
-      ignoreOrder: false,
-    }),
-  ],
   module: {
     rules: [
       {
