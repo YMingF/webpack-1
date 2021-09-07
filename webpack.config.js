@@ -6,6 +6,7 @@ const base = require("./webpack.config.base.js"); //导入包含共有属性的j
 module.exports = {
   ...base, //把base的所有属性抄到这里来
   mode: "development",
+  devtool: "inline-source-map",
   devServer: {
     contentBase: "./dist",
   },
